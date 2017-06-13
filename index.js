@@ -1,18 +1,15 @@
 var express= require("express");
 var bodyParser = require("body-parser");
-
+var port = (process.env.PORT||5000)
 
 var app = express();
 
-app.get('/',function (req,res){
-	res.send("hola");
-	console.log('New request!');
-});
+
+app.use(express.static(__dirname+"/public"));
 
 
-app.listen(5000);
 
-
+/*
 var games = [];
 
 app.get("/api-test/games/loadInitialData", (req,res) =>{
@@ -39,8 +36,8 @@ app.get("/api/sandbox/games/:name", (req,res) =>{
 		res.sendStatus(404);
 	}
 	console.log("New GET of resource "+name);
-	
-	
+
+
 });
 
 app.post("/api/sandbox/games", (req,res) =>{
@@ -69,7 +66,7 @@ app.put("/api/sandbox/games/:name", (req,res) =>{
 		res.sendStatus(404);
 	}
 	console.log("New PUT of resource "+game.name);
-	
+
 });
 
 app.put("/api/sandbox/games", (req,res) =>{
@@ -96,5 +93,9 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 		res.sendStatus(404);
 	}
 	console.log("You deleted the game successfully.");
-	
+
+});
+*/
+app.listen(port, ()=>{
+	console.log("Listenig on port"+port);
 });
